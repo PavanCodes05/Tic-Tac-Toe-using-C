@@ -10,6 +10,8 @@ char board[3][3] = {
     {' ', ' ', ' '}
 };
 
+char currentPlayer = 'X';
+
 int main() {
     displayGameboard(board);
     getPlayerInput();
@@ -41,10 +43,14 @@ void getPlayerInput() {
     if (row > 3 || col > 3) {
         printf("Invalid\n");
         return;
-    }else {
-        board[row - 1][col - 1] = 'X';
+    };
+
+    if (board[row - 1][col - 1] == ' '){
+        board[row - 1][col - 1] = currentPlayer;
+        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X'; 
         displayGameboard(board);
     };
+    return 0;
 };
 
 // char determineWinner(char board[3][3]) {
