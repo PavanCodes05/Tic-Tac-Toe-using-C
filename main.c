@@ -4,6 +4,7 @@
 void displayGameboard(char board[3][3]);
 char determineWinner(char board[3][3]);
 void getPlayerInput();
+bool hasFreeGrids(char board[3][3]);
 
 char board[3][3] = {
     {' ', ' ', ' '},
@@ -16,8 +17,6 @@ char currentPlayer = 'X';
 int main() {
     // Initial State
     displayGameboard(board);
-
-    // Player turn
 
     // flag to end the game
     char winner = ' ';
@@ -33,9 +32,13 @@ int main() {
             break;
         }
         // Check for free grids
+        if (!hasFreeGrids(board)) {
+            printf("The Match Drawn!");
+            break;
+        } 
     };
     printf("\n\n");
-    printf("%c Wins\n", winner);
+    (winner != ' ') ? printf("%c Wins\n", winner): printf("Thank you!") ;
     printf("\n\n");
 
     return 0;
@@ -102,4 +105,19 @@ char determineWinner(char board[3][3]) {
     };
 
     return ' ';
+};
+
+
+bool hasFreeGrids(char board[3][3]) {
+    int i, j;
+
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            if (board[i][j] == ' ') {
+                return true;
+            };
+        };
+    };
+
+    return false;
 };
