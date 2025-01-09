@@ -53,6 +53,29 @@ void getPlayerInput() {
     return 0;
 };
 
-// char determineWinner(char board[3][3]) {
+char determineWinner(char board[3][3]) {
+    // Horizontal Checks
+    if(board[0][0] == board[0][1] && board[0][1] == board[0][2]) {
+        return board[0][0];
+    } elif (board[1][0] == board[1][1] && board[1][1] == board[1][2]) {
+        return board[1][1];
+    } elif(board[2][0] == board[2][1] && board[1][1] == board[2][2]) {
+        return board[2][0];
+    };
 
-// };
+    // Vertical Checks
+    if (board[0][0] == board[1][0] && board[1][0] == board[2][0]) {
+        return board[0][0];
+    } elif(board[0][1] == board[1][1] && board[1][1] == board[2][1]) {
+        return board[0][1];
+    } elif(board[0][2] == board[1][2] && board[1][2] == board[2][2]) {
+        return board[0][2]
+    }
+
+    // Diagonal Checks
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+        return board[0][0];
+    } elif(board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+        return board[0][2];
+    }
+};
