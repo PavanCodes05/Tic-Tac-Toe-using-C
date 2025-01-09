@@ -2,15 +2,17 @@
 
 void displayGameboard(char board[3][3]);
 char determineWinner(char board[3][3]);
+void getPlayerInput();
+
+char board[3][3] = {
+    {' ', ' ', ' '},
+    {' ', ' ', ' '},
+    {' ', ' ', ' '}
+};
 
 int main() {
-    char board[3][3] = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-    };
-
     displayGameboard(board);
+    getPlayerInput();
     return 0;
 };
 
@@ -19,7 +21,7 @@ void displayGameboard(char board[3][3]) {
     for(i = 0;i < 3; i++) {
         for (j = 0; j < 3; j++) {
             printf("|");
-            printf(" %d ", board[i][j]);
+            printf(" %c ", board[i][j]);
             printf("|");
         }
         printf("\n");
@@ -27,6 +29,24 @@ void displayGameboard(char board[3][3]) {
 
 };
 
-char determineWinner(char board[3][3]) {
+void getPlayerInput() {
+    // char getPlayerTurn()
+    int row, col;
+    printf("Enter the row: ");
+    scanf("%d", &row);
+    
+    printf("Enter the column: ");
+    scanf("%d", &col);
 
+    if (row > 3 || col > 3) {
+        printf("Invalid\n");
+        return;
+    }else {
+        board[row - 1][col - 1] = 'X';
+        displayGameboard(board);
+    };
 };
+
+// char determineWinner(char board[3][3]) {
+
+// };
